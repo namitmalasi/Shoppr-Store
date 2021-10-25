@@ -157,3 +157,20 @@ exports.updateUserPassword = asyncHandler(async (req, res, next) => {
 
   sendToken(user, 200, res);
 });
+
+// Update user profile
+exports.updateUserProfile = asyncHandler(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+  };
+
+  // We wil add cloudinary later
+  const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindandModify: false,
+  });
+
+  res.status(200).json({ success: true });
+});
