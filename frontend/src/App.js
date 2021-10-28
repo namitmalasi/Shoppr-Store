@@ -18,6 +18,7 @@ function App() {
     <Router>
       <Header />
       <Route path="/" component={Home} exact />
+
       <Footer />
     </Router>
   );
