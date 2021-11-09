@@ -121,7 +121,7 @@ const ProductDetails = ({ match }) => {
               />
 
               <textarea
-                className="submitDialogTextArea"
+               className="submitDialogTextArea"
                 cols="30"
                 rows="5"
                 value={comment}
