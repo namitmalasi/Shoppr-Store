@@ -21,13 +21,23 @@ exports.getAllProducts = asyncHandler(async (req, res, next) => {
   const productsCount = await Product.countDocuments();
   const apiFeature = new ApiFeatures(Product.find(), req.query)
     .search()
-    .filter()
-    .pagination(resultsPerPage);
-  const products = await apiFeature.query;
+    .filter();
 
-  res
-    .status(200)
-    .json({ success: true, products, productsCount, resultsPerPage });
+  let products = await apiFeature.query;
+
+  let filteredProductsCount = products.length;
+
+  apiFeature.pagination(resultsPerPage);
+
+  products = await apiFeature.query.clone();
+
+  res.status(200).json({
+    success: true,
+    products,
+    productsCount,
+    resultsPerPage,
+    filteredProductsCount,
+  });
 });
 
 // Get Single Product
