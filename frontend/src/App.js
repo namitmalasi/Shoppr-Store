@@ -9,6 +9,7 @@ import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products.js";
 import Search from "./component/Product/Search.js";
 import LoginSignUp from "./component/User/LoginSignUp.js";
+import Profile from "./component/User/Profile.js";
 import { loadUser } from "./actions/userAction.js";
 import store from "./store";
 import UserOptions from "./component/layout/Header/UserOption.js";
@@ -33,6 +34,7 @@ function App() {
       <Route path="/product/:id" component={ProductDetails} />
       <Route path="/products" component={Products} exact />
       <Route path="/products/:keyword" component={Products} />
+      <Route path="/account" component={Profile} />
       <Route path="/search" component={Search} exact />
       <Route path="/login" component={LoginSignUp} exact />
 
