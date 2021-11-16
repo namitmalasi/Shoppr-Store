@@ -11,6 +11,7 @@ import Search from "./component/Product/Search.js";
 import LoginSignUp from "./component/User/LoginSignUp.js";
 import Profile from "./component/User/Profile.js";
 import UpdateProfile from "./component/User/UpdateProfile.js";
+import UpdatePassword from "./component/User/UpdatePassword.js";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
 import { loadUser } from "./actions/userAction.js";
 import store from "./store";
@@ -38,6 +39,11 @@ function App() {
       <Route path="/products/:keyword" component={Products} />
       <ProtectedRoute exact path="/account" component={Profile} />
       <ProtectedRoute exact path="/me/update" component={UpdateProfile} />
+      <ProtectedRoute
+        exact
+        path="/password/update"
+        component={UpdatePassword}
+      />
       <Route path="/search" component={Search} exact />
       <Route path="/login" component={LoginSignUp} exact />
 
