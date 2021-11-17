@@ -39,7 +39,7 @@ const UpdatePassword = ({ history }) => {
     }
 
     if (isUpdated) {
-      alert.success("Profile Updated successfully");
+      alert.success("Password Updated successfully");
       history.push("/account");
 
       dispatch({ type: UPDATE_PASSWORD_RESET });
@@ -58,7 +58,6 @@ const UpdatePassword = ({ history }) => {
               <h2 className="updatePasswordHeading">Update Profile</h2>
               <form
                 className="updatePasswordForm"
-                encType="multipart/form-data"
                 onSubmit={updatePasswordSubmit}
               >
                 <div className="loginPassword">
