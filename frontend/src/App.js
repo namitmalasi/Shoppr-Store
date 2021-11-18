@@ -13,6 +13,7 @@ import Profile from "./component/User/Profile.js";
 import UpdateProfile from "./component/User/UpdateProfile.js";
 import UpdatePassword from "./component/User/UpdatePassword.js";
 import ForgotPassword from "./component/User/ForgotPassword.js";
+import ResetPassword from "./component/User/ResetPassword.js";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
 import { loadUser } from "./actions/userAction.js";
 import store from "./store";
@@ -46,8 +47,9 @@ function App() {
         component={UpdatePassword}
       />
       <Route exact path="/password/forgot" component={ForgotPassword} />
-      <Route path="/search" component={Search} exact />
-      <Route path="/login" component={LoginSignUp} exact />
+      <Route exact path="/password/reset/:token" component={ResetPassword} />
+      <Route exact path="/search" component={Search} />
+      <Route exact path="/login" component={LoginSignUp} />
 
       <Footer />
     </Router>
