@@ -21,6 +21,7 @@ import { loadUser } from "./actions/userAction.js";
 import store from "./store";
 import UserOptions from "./component/layout/Header/UserOption.js";
 import { useSelector } from "react-redux";
+import ConfirmOrder from "./component/Cart/ConfirmOrder.js";
 
 function App() {
   const { user, isAuthenticated } = useSelector((state) => state.user);
@@ -54,7 +55,8 @@ function App() {
       <Route exact path="/login" component={LoginSignUp} />
       <Route exact path="/cart" component={Cart} />
       <ProtectedRoute exact path="/shipping" component={Shipping} />
- 
+      <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
+
       <Footer />
     </Router>
   );
