@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./component/layout/Header/Header.js";
 import Footer from "./component/layout/Footer/Footer.js";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import Home from "./component/Home/Home.js";
 import "./App.css";
@@ -28,6 +28,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./component/Cart/OrderSuccess.js";
 import MyOrders from "./component/Order/MyOrders.js";
+import OrderDetails from "./component/Order/OrderDetails.js";
 
 function App() {
   const { user, isAuthenticated } = useSelector((state) => state.user);
@@ -54,33 +55,37 @@ function App() {
     <Router>
       <Header />
       {isAuthenticated && <UserOptions user={user} />}
-      <Route path="/" component={Home} exact />
-      <Route path="/product/:id" component={ProductDetails} />
-      <Route path="/products" component={Products} exact />
-      <Route path="/products/:keyword" component={Products} />
-      <ProtectedRoute exact path="/account" component={Profile} />
-      <ProtectedRoute exact path="/me/update" component={UpdateProfile} />
-      <ProtectedRoute
-        exact
-        path="/password/update"
-        component={UpdatePassword}
-      />
-      <Route exact path="/password/forgot" component={ForgotPassword} />
-      <Route exact path="/password/reset/:token" component={ResetPassword} />
-      <Route exact path="/search" component={Search} />
-      <Route exact path="/login" component={LoginSignUp} />
-      <Route exact path="/cart" component={Cart} />
-      <ProtectedRoute exact path="/shipping" component={Shipping} />
-      <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
 
       {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
           <ProtectedRoute exact path="/process/payment" component={Payment} />
         </Elements>
       )}
-      <ProtectedRoute exact path="/success" component={OrderSuccess} />
-      <ProtectedRoute exact path="/orders" component={MyOrders} />
 
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="/product/:id" component={ProductDetails} />
+        <Route path="/products" component={Products} exact />
+        <Route path="/products/:keyword" component={Products} />
+        <ProtectedRoute exact path="/account" component={Profile} />
+        <ProtectedRoute exact path="/me/update" component={UpdateProfile} />
+        <ProtectedRoute
+          exact
+          path="/password/update"
+          component={UpdatePassword}
+        />
+        <Route exact path="/password/forgot" component={ForgotPassword} />
+        <Route exact path="/password/reset/:token" component={ResetPassword} />
+        <Route exact path="/search" component={Search} />
+        <Route exact path="/login" component={LoginSignUp} />
+        <Route exact path="/cart" component={Cart} />
+        <ProtectedRoute exact path="/shipping" component={Shipping} />
+        <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
+
+        <ProtectedRoute exact path="/success" component={OrderSuccess} />
+        <ProtectedRoute exact path="/orders" component={MyOrders} />
+        <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
+      </Switch>
       <Footer />
     </Router>
   );
