@@ -14,7 +14,7 @@ import StorageIcon from "@material-ui/icons/Storage";
 import SpellcheckIcon from "@material-ui/icons/Spellcheck";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import SideBar from "./Sidebar";
-import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
+import { UPDATE_PRODUCT_RESET } from "../../constants/productConstant";
 
 const UpdateProduct = ({ history, match }) => {
   const dispatch = useDispatch();

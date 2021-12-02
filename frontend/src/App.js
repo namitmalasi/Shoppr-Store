@@ -33,6 +33,11 @@ import Dashboard from "./component/admin/Dashboard.js";
 import ProductList from "./component/admin/ProductList.js";
 import NewProduct from "./component/admin/NewProduct.js";
 import UpdateProduct from "./component/admin/UpdateProduct.js";
+import OrderList from "./component/admin/OrderList.js";
+import ProcessOrder from "./component/admin/ProcessOrder.js";
+import UsersList from "./component/admin/UsersList.js";
+import UpdateUser from "./component/admin/UpdateUser.js";
+import ProductReviews from "./component/admin/ProductReviews.js";
 
 function App() {
   const { user, isAuthenticated } = useSelector((state) => state.user);
@@ -50,7 +55,6 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
-
     store.dispatch(loadUser());
 
     getStripeApiKey();
@@ -90,8 +94,8 @@ function App() {
         <ProtectedRoute exact path="/orders" component={MyOrders} />
         <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
         <ProtectedRoute
-          isAdmin={true}
           exact
+          isAdmin={true}
           path="/admin/dashboard"
           component={Dashboard}
         />
@@ -112,6 +116,36 @@ function App() {
           exact
           path="/admin/product/:id"
           component={UpdateProduct}
+        />
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/orders"
+          component={OrderList}
+        />
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/order/:id"
+          component={ProcessOrder}
+        />
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/users"
+          component={UsersList}
+        />
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/user/:id"
+          component={UpdateUser}
+        />
+        <ProtectedRoute
+          isAdmin={true}
+          exact
+          path="/admin/reviews"
+          component={ProductReviews}
         />
       </Switch>
 
