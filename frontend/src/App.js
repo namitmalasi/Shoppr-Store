@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./component/layout/Header/Header.js";
 import Footer from "./component/layout/Footer/Footer.js";
+import About from "./component/layout/About/About.js";
+import Contact from "./component/layout/Contact/Contact.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import Home from "./component/Home/Home.js";
@@ -75,6 +77,8 @@ function App() {
         <Route path="/product/:id" component={ProductDetails} />
         <Route path="/products" component={Products} exact />
         <Route path="/products/:keyword" component={Products} />
+        <Route path="/about" component={About} exact />
+        <Route path="/contact" component={Contact} exact />
         <ProtectedRoute exact path="/account" component={Profile} />
         <ProtectedRoute exact path="/me/update" component={UpdateProfile} />
         <ProtectedRoute

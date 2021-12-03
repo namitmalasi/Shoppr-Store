@@ -157,6 +157,7 @@ export const productReviewsReducer = (state = { reviews: [] }, action) => {
       return { ...state, loading: true };
     case ALL_REVIEW_SUCCESS:
       return {
+        ...state,
         loading: false,
         reviews: action.payload,
       };
@@ -176,6 +177,7 @@ export const reviewReducer = (state = {}, action) => {
       return { ...state, loading: true };
     case DELETE_REVIEW_SUCCESS:
       return {
+        ...state,
         loading: false,
         isDeleted: action.payload,
       };
