@@ -23,6 +23,7 @@ import ProtectedRoute from "./component/Route/ProtectedRoute";
 import { loadUser } from "./actions/userAction.js";
 import store from "./store";
 import UserOptions from "./component/layout/Header/UserOption.js";
+import NotFound from "./component/layout/Not Found/NotFound.js";
 import { useSelector } from "react-redux";
 import ConfirmOrder from "./component/Cart/ConfirmOrder.js";
 import Payment from "./component/Cart/Payment.js";
@@ -150,6 +151,12 @@ function App() {
           exact
           path="/admin/reviews"
           component={ProductReviews}
+        />
+
+        <Route
+          component={
+            window.location.pathname === "/process/payment" ? null : NotFound
+          }
         />
       </Switch>
 
